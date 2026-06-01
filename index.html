@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Secure UPI Payment</title>
+
+  <link rel="stylesheet" href="style.css"/>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+<div class="container">
+
+  <div class="topbar">
+    <div class="logo">
+      <div class="shield">✔</div>
+      <div>
+        <h2>LoanSecure</h2>
+        <p>Trusted Secure Payments</p>
+      </div>
+    </div>
+
+    <div class="secure">
+      🔒 256-bit Secure Payment
+    </div>
+  </div>
+
+  <div class="hero">
+    <h1>Loan Repayment Portal</h1>
+    <p>Complete your repayment securely within 9 minutes.</p>
+  </div>
+
+  <div class="timer-box">
+    <h3>Session expires in</h3>
+
+    <div id="timer">09:00</div>
+
+    <div class="status">
+      ● Your payment session is active
+    </div>
+  </div>
+
+  <div class="payment-box">
+
+    <div class="left">
+
+      <h2>Scan & Pay</h2>
+
+      <img src="qr1.jpeg" class="qr"/>
+
+      <div class="upi-box">
+        meowbeg@ptaxis
+      </div>
+
+      <button onclick="copyUPI()">
+        Copy UPI ID
+      </button>
+
+    </div>
+
+    <div class="divider">
+      OR
+    </div>
+
+    <div class="right">
+
+      <h2>Pay Using UPI App</h2>
+
+      <a class="pay-btn"
+      href="upi://pay?pa=meowbeg@ptaxis&pn=LoanSecure&cu=INR">
+
+      Open UPI App
+
+      </a>
+
+      <div class="apps">
+
+        <div>GPay</div>
+        <div>PhonePe</div>
+        <div>Paytm</div>
+        <div>BHIM</div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+  <div class="processing">
+    Awaiting payment confirmation...
+  </div>
+
+</div>
+
+<script>
+
+let time = 540;
+
+const timer = document.getElementById("timer");
+
+setInterval(() => {
+
+  let minutes = Math.floor(time / 60);
+  let seconds = time % 60;
+
+  timer.innerHTML =
+    `${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
+
+  if(time <= 0){
+    timer.innerHTML = "EXPIRED";
+  }
+
+  time--;
+
+},1000);
+
+function copyUPI(){
+
+  navigator.clipboard.writeText("meowbeg@ptaxis");
+
+  alert("UPI ID Copied");
+
+}
+
+</script>
+
+</body>
+</html>
